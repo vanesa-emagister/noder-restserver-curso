@@ -1,0 +1,38 @@
+ 
+ 
+ <table class="table" id="tableTest">
+    {{#getTabla}}
+        {{#getTabla}}
+        {{/getTabla}}
+      {{/getTabla}}
+</table>
+
+<script>
+$(document).ready(function() {
+    try {
+        console.log("clickeando");
+        $('a[id^="ejecutarScript"]').click(function(event) {
+            event.preventDefault();
+            console.log("clickeando");
+            var root = $(this).attr("dataEjecutar");
+           $.ajax({
+            url: "bash?saludo=" + root,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: { "saludo": root },
+            type: 'GET',
+            success: function(data) {
+                alert(data);
+            }
+
+    });
+            //shell.exec(parseo);
+            console.log("Ejecutando Parseo");
+
+        })
+    } catch (error) {
+        console.log(error);
+    }
+});
+</script>
